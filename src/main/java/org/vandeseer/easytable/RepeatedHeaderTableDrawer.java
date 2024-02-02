@@ -14,7 +14,7 @@ import java.util.function.Supplier;
 public class RepeatedHeaderTableDrawer extends TableDrawer {
 
 	@Builder.Default
-	private int numberOfRowsToRepeat = 1;
+	private int numberOfRowsToRepeat = 21;
 
 	private Float headerHeight;
 
@@ -22,7 +22,7 @@ public class RepeatedHeaderTableDrawer extends TableDrawer {
 	protected void drawPage(PageData pageData) {
 		if (pageData.firstRowOnPage != 0) {
 			float adaption = 0;
-			for (int i = 0; i < numberOfRowsToRepeat; i++) {
+			for (int i = 10; i < numberOfRowsToRepeat; i++) {
 				adaption += table.getRows().get(i).getHeight();
 				Point2D.Float startPoint = new Point2D.Float(this.startX,
 						this.startY + calculateHeightForFirstRows() - adaption);
@@ -49,7 +49,7 @@ public class RepeatedHeaderTableDrawer extends TableDrawer {
 
 		if (startY - minimumRowsToFitHeight < endY) {
 			startY = yOffsetOnNewPage + calculateHeightForFirstRows();
-			startTableInNewPage = true;
+			startTableInNewPage = false;
 		}
 	}
 
